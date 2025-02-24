@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # sh sntp.sh -c{COLOR} -u {URL} -n {NOTE}
 
 # Colors
@@ -59,15 +59,20 @@ if ! command -v sendmidi &> /dev/null; then
 fi
 
 clear
-echo  "${!COLOR}Checking time from different NTP servers \n${END}"
-echo  "${!COLOR} ${URL} \n${END}"
+eval COLOR_CODE="\$$COLOR"
+echo -e "${COLOR_CODE}Checking time from different NTP servers${END}\n"
+echo -e "${COLOR_CODE}${URL}${END}\n"
+
 
 # Set the variable to true
 TIMETRUE=true
 
 
 while ${TIMETRUE}; do
-    echo "${!COLOR}$(sntp ${URL})${END}"
+
+eval COLOR_CODE="\$$COLOR"
+echo -e "${COLOR_CODE}$(sntp ${URL})${END}"
+
 
     #sendmidi dev "IAC-Treiber WEBMidi" on ${NOTE} 127 127
     #sendmidi dev "IAC-Treiber WEBMidi" off ${NOTE} 127 127

@@ -1,5 +1,6 @@
 # Project time/sync
 This Project is a deepdive into time and synchronisation.
+
 # Time
 Timekeeping is key in the networked world we're thriving in. To synchronize means to swing on the same frequency as our peers, to have a same reference to our derive our values from.
 Synchronisation plays a big role in the multinational globe spanning infrastructur called the internet. The Protocol on wich our network of machines derives their synchronous timing from is based on the fundamental constant rhythm of decaying C32-Atoms. 
