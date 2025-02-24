@@ -14,8 +14,10 @@ TIMETRUE=false
 DEFAULT_URL="pool.ntp.org"
 DEFAULT_COLOR="GREEN"
 DEFAULT_NOTE="127"  # Default MIDI note (C1)
+NOTE_FLAG="false"
 
-while getopts ":u:c:n:h" opt; do
+
+while getopts ":u:c:n:h:x" opt; do
   case $opt in
     u) URL="$OPTARG";;
     c) COLOR="$OPTARG";;
@@ -31,6 +33,7 @@ while getopts ":u:c:n:h" opt; do
       echo -e "Usage: sntp.sh -u <URL> -c <COLOR> -n <NOTE> \n\nOptions: \n-u <URL> \t\t The URL of the NTP server (example: pool.ntp.org) \n-c <COLOR> \t\t The color of the output (RED, GREEN, YELLOW, BLUE, PURPLE, CYAN) \n-n <NOTE> \t\t The MIDI note to play (must be a number, default: 127 for C1) \n-h \t\t\t Display this help message"
       exit 0
       ;;
+    x) NOTE_FLAG="true";;
     \?) 
       echo -e "${RED}Invalid option: -$OPTARG${END}"
       exit 1
@@ -65,7 +68,9 @@ TIMETRUE=true
 
 while ${TIMETRUE}; do
     echo "${!COLOR}$(sntp ${URL})${END}"
-    sendmidi dev "IAC-Treiber WEBMidi" on ${NOTE} 127 127
-    sendmidi dev "IAC-Treiber WEBMidi" off ${NOTE} 127 127
-     sleep 1
+
+    #sendmidi dev "IAC-Treiber WEBMidi" on ${NOTE} 127 127
+    #sendmidi dev "IAC-Treiber WEBMidi" off ${NOTE} 127 127
+    
+    sleep 1
 done
